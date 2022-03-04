@@ -3,15 +3,16 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 #endif
 
-namespace StarterAssets
+namespace Movement
 {
-	public class StarterAssetsInputs : MonoBehaviour
+	public class Inputs : MonoBehaviour
 	{
 		[Header("Character Input Values")]
 		public Vector2 move;
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
+		public bool cursorDown;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -45,6 +46,12 @@ namespace StarterAssets
 		{
 			SprintInput(value.isPressed);
 		}
+
+		public void OnShoot(InputValue value)
+		{
+			Debug.Log("Mouse down!" + value.Get());
+			CursorInput(value.isPressed);
+		}
 #else
 	// old input sys if we do decide to have it (most likely wont)...
 #endif
@@ -68,6 +75,11 @@ namespace StarterAssets
 		public void SprintInput(bool newSprintState)
 		{
 			sprint = newSprintState;
+		}
+
+		public void CursorInput(bool isDown)
+		{
+			cursorDown = isDown;
 		}
 
 #if !UNITY_IOS || !UNITY_ANDROID

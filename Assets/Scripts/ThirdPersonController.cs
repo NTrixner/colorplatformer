@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
  */
 
-namespace StarterAssets
+namespace Movement
 {
 	[RequireComponent(typeof(CharacterController))]
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
@@ -85,7 +85,7 @@ namespace StarterAssets
 		private PlayerInput _playerInput;
 		private Animator _animator;
 		private CharacterController _controller;
-		private StarterAssetsInputs _input;
+		private Inputs _input;
 		private GameObject _mainCamera;
 
 		private const float _threshold = 0.01f;
@@ -107,7 +107,7 @@ namespace StarterAssets
 		{
 			_hasAnimator = TryGetComponent(out _animator);
 			_controller = GetComponent<CharacterController>();
-			_input = GetComponent<StarterAssetsInputs>();
+			_input = GetComponent<Inputs>();
 			_playerInput = GetComponent<PlayerInput>();
 
 			AssignAnimationIDs();
