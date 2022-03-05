@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
@@ -14,16 +15,17 @@ namespace Movement
 #endif
 	public class ThirdPersonController : MonoBehaviour
 	{
+		[FormerlySerializedAs("SprintSpeed")]
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
-		public float MoveSpeed = 2.0f;
-		[Tooltip("Sprint speed of the character in m/s")]
-		public float SprintSpeed = 5.335f;
+		public float MoveSpeed = 5.335f;
 		[Tooltip("How fast the character turns to face movement direction")]
 		[Range(0.0f, 0.3f)]
 		public float RotationSmoothTime = 0.12f;
 		[Tooltip("Acceleration and deceleration")]
 		public float SpeedChangeRate = 10.0f;
+
+		public float CameraSensitivity = 1f;
 
 		[Space(10)]
 		[Tooltip("The height the player can jump")]
@@ -155,11 +157,11 @@ namespace Movement
 
 		private void CameraRotation()
 		{
-			// if there is an input and camera position is not fixed
-			if (_input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
+			// if camera position is not fixed
+			if (!LockCameraPosition)
 			{
 				//Don't multiply mouse input by Time.deltaTime;
-				float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
+				float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime * CameraSensitivity;
 				
 				_cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier;
 				_cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier;
@@ -176,7 +178,7 @@ namespace Movement
 		private void Move()
 		{
 			// set target speed based on move speed, sprint speed and if sprint is pressed
-			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+			float targetSpeed = MoveSpeed;
 
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -320,6 +322,11 @@ namespace Movement
 			
 			// when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
 			Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
+		}
+
+		public void SetCameraSensitivity(float newSensitivity)
+		{
+			CameraSensitivity = newSensitivity;
 		}
 	}
 }

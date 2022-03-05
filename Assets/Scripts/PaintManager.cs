@@ -30,7 +30,7 @@ namespace ColorPlatformer
         {
             RenderTexture renderTex = receiver.renderTexture;
             RenderTexture paintTex = receiver.paintTexture;
-            Renderer rend = receiver.renderer;
+            Renderer rend = receiver.receiverRenderer;
 
             command.SetRenderTarget(renderTex);
             command.SetRenderTarget(paintTex);
@@ -48,7 +48,7 @@ namespace ColorPlatformer
                 receiver, pos, radius, hardness, strength, color));
             RenderTexture renderTex = receiver.renderTexture;
             RenderTexture paintTex = receiver.paintTexture;
-            Renderer rend = receiver.renderer;
+            Renderer rend = receiver.receiverRenderer;
             
             paintMaterial.SetTexture(texId, renderTex);
             paintMaterial.SetVector(positionID, pos);

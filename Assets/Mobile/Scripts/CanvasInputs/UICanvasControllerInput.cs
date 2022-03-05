@@ -24,11 +24,6 @@ namespace Movement
             inputs.JumpInput(virtualJumpState);
         }
 
-        public void VirtualSprintInput(bool virtualSprintState)
-        {
-            inputs.SprintInput(virtualSprintState);
-        }
-        
     }
 
 }

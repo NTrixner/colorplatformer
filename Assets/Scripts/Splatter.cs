@@ -4,11 +4,12 @@ public class Splatter : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag($"Paint Target"))
+        PaintReceiver pr = collision.gameObject.GetComponent<PaintReceiver>();
+        if (pr != null)
         {
             ContactPoint contact = collision.GetContact(0);
-            collision.gameObject.GetComponent<PaintReceiver>()
-                .ReceivePaint(contact.point, contact.normal);
+            Color c = gameObject.GetComponent<Renderer>().material.color;
+            pr.ReceivePaint(contact.point, contact.normal, c);
             Destroy(gameObject);
         }
     }
