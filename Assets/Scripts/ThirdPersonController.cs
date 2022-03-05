@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
@@ -14,11 +15,10 @@ namespace Movement
 #endif
 	public class ThirdPersonController : MonoBehaviour
 	{
+		[FormerlySerializedAs("SprintSpeed")]
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
-		public float MoveSpeed = 2.0f;
-		[Tooltip("Sprint speed of the character in m/s")]
-		public float SprintSpeed = 5.335f;
+		public float MoveSpeed = 5.335f;
 		[Tooltip("How fast the character turns to face movement direction")]
 		[Range(0.0f, 0.3f)]
 		public float RotationSmoothTime = 0.12f;
@@ -176,7 +176,7 @@ namespace Movement
 		private void Move()
 		{
 			// set target speed based on move speed, sprint speed and if sprint is pressed
-			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+			float targetSpeed = MoveSpeed;
 
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 

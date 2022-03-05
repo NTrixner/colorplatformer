@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 760572445}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Paint Target
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1480,10 +1480,8 @@ MonoBehaviour:
   m_Mesh: {fileID: 1337512497}
   m_IsSelectable: 1
   m_SelectedFaces: 
-  m_SelectedEdges:
-  - a: 65
-    b: 67
-  m_SelectedVertices: 4100000043000000
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!4 &760572444
 Transform:
   m_ObjectHideFlags: 0

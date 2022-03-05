@@ -11,7 +11,6 @@ namespace Movement
 		public Vector2 move;
 		public Vector2 look;
 		public bool jump;
-		public bool sprint;
 		public bool cursorDown;
 
 		[Header("Movement Settings")]
@@ -42,11 +41,6 @@ namespace Movement
 			JumpInput(value.isPressed);
 		}
 
-		public void OnSprint(InputValue value)
-		{
-			SprintInput(value.isPressed);
-		}
-
 		public void OnShoot(InputValue value)
 		{
 			CursorInput(value.isPressed);
@@ -69,11 +63,6 @@ namespace Movement
 		public void JumpInput(bool newJumpState)
 		{
 			jump = newJumpState;
-		}
-
-		public void SprintInput(bool newSprintState)
-		{
-			sprint = newSprintState;
 		}
 
 		public void CursorInput(bool isDown)
