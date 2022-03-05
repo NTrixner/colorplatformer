@@ -54,7 +54,7 @@ public class ColorShooter : MonoBehaviour
             {
                 paintBar.Shoot(baseColorCost);
                 Transform thisTrans = transform;
-                Vector3 force = Vector3.Lerp(direction, thisTrans.up, 0.3f) * Force;
+                Vector3 force = direction * Force;
                 GameObject instantiated = Instantiate(ProjectilePrefab);
                 instantiated.transform.SetPositionAndRotation(thisTrans.position + direction, thisTrans.rotation);
                 instantiated.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
