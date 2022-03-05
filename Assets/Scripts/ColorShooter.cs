@@ -2,6 +2,7 @@ using System;
 using Movement;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class ColorShooter : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class ColorShooter : MonoBehaviour
     [SerializeField] private GameObject ProjectilePrefab;
 
     [SerializeField] private float spawnInterval = 0.5f;
+    
+    [SerializeField] private float baseColorCost = 5f;
+
+    [SerializeField] private Color baseColor = Color.green;
 
     private Inputs input;
 
@@ -21,10 +26,15 @@ public class ColorShooter : MonoBehaviour
 
     private float timeSinceLastSpawn = 0f;
 
+    private PaintBar paintBar;
+
     private void Start()
     {
         input = FindObjectOfType<Inputs>();
         thirdPersonController = FindObjectOfType<ThirdPersonController>();
+        paintBar = FindObjectOfType<PaintBar>();
+        baseColor = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+        paintBar.SetColor(baseColor);
     }
 
     private void Update()
@@ -40,13 +50,15 @@ public class ColorShooter : MonoBehaviour
         if (input.aim)
         {
             Vector3 direction = Vector3.Normalize(targetPoint - transform.position);
-            if (input.cursorDown && timeSinceLastSpawn >= spawnInterval)
+            if (input.cursorDown && timeSinceLastSpawn >= spawnInterval && paintBar.CanShoot(baseColorCost))
             {
+                paintBar.Shoot(baseColorCost);
                 Transform thisTrans = transform;
                 Vector3 force = Vector3.Lerp(direction, thisTrans.up, 0.3f) * Force;
                 GameObject instantiated = Instantiate(ProjectilePrefab);
                 instantiated.transform.SetPositionAndRotation(thisTrans.position + direction, thisTrans.rotation);
                 instantiated.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
+                instantiated.GetComponent<Renderer>().material.color = baseColor;
                 timeSinceLastSpawn = 0;
             }
 
