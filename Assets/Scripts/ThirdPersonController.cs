@@ -158,7 +158,7 @@ namespace Movement
 		private void CameraRotation()
 		{
 			// if camera position is not fixed
-			if (!LockCameraPosition)
+			if (_input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
 			{
 				//Don't multiply mouse input by Time.deltaTime;
 				float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime * CameraSensitivity;

@@ -56,7 +56,7 @@ public class ColorShooter : MonoBehaviour
                 Transform thisTrans = transform;
                 Vector3 force = direction * Force;
                 GameObject instantiated = Instantiate(ProjectilePrefab);
-                instantiated.transform.SetPositionAndRotation(thisTrans.position + direction, thisTrans.rotation);
+                instantiated.transform.SetPositionAndRotation(thisTrans.position, thisTrans.rotation);
                 instantiated.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
                 instantiated.GetComponent<Renderer>().material.color = baseColor;
                 timeSinceLastSpawn = 0;

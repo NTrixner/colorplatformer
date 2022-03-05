@@ -7,7 +7,8 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] private Vector3[] waypoints;
     [SerializeField] private float movementSpeed = 1f;
 
-    private int currentTargetIndex = 0;
+    public int currentTargetIndex = 0;
+    public Vector3 currentTarget;
 
     private ThirdPersonController thirdPersonController;
 
@@ -16,15 +17,11 @@ public class MovingPlatform : MonoBehaviour
     {
         if (waypoints.Length >= 2)
         {
-            Vector3 currentTarget = waypoints[(currentTargetIndex) % waypoints.Length];
+            currentTarget = waypoints[(currentTargetIndex) % waypoints.Length];
             Vector3 step = (currentTarget - transform.position).normalized * movementSpeed * Time.deltaTime;
             //transform.localPosition = Vector3.MoveTowards(transform.localPosition, currentTarget, step.magnitude);
-            if (Vector3.Distance(transform.position + step, currentTarget) <= 0.01f)
-            {
-                step = currentTarget - transform.position;
-            }
             transform.Translate(step);
-            if (transform.position == currentTarget)
+            if (Vector3.Distance(transform.position, currentTarget) < 0.1f)
             {
                 currentTargetIndex = (currentTargetIndex + 1) % waypoints.Length;
             }

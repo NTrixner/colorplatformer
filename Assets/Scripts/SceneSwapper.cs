@@ -12,17 +12,6 @@ public class SceneSwapper : MonoBehaviour
         "level3"
     };
     
-    private void Awake()
-    {
-        SceneSwapper[] obj = FindObjectsOfType<SceneSwapper>();
-        if (obj.Length > 1)
-        {
-            Destroy(gameObject);
-        }
-        
-        DontDestroyOnLoad(gameObject);
-    }
-
     public void LoadNextLevel()
     {
         index++;
