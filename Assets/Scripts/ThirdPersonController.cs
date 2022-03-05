@@ -25,6 +25,8 @@ namespace Movement
 		[Tooltip("Acceleration and deceleration")]
 		public float SpeedChangeRate = 10.0f;
 
+		public float CameraSensitivity = 1f;
+
 		[Space(10)]
 		[Tooltip("The height the player can jump")]
 		public float JumpHeight = 1.2f;
@@ -155,11 +157,11 @@ namespace Movement
 
 		private void CameraRotation()
 		{
-			// if there is an input and camera position is not fixed
-			if (_input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
+			// if camera position is not fixed
+			if (!LockCameraPosition)
 			{
 				//Don't multiply mouse input by Time.deltaTime;
-				float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
+				float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime * CameraSensitivity;
 				
 				_cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier;
 				_cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier;
@@ -320,6 +322,11 @@ namespace Movement
 			
 			// when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
 			Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
+		}
+
+		public void SetCameraSensitivity(float newSensitivity)
+		{
+			CameraSensitivity = newSensitivity;
 		}
 	}
 }

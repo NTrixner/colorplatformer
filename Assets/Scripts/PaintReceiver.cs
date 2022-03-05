@@ -32,9 +32,9 @@ public class PaintReceiver : MonoBehaviour
         paintManager.initTextures(this);
     }
 
-    public void ReceivePaint(Vector3 point, Vector3 normal)
+    public void ReceivePaint(Vector3 point, Vector3 normal, Color c)
     {
-        paintManager.paint(this, point, 1f, 0.5f, 1f, Color.red);
+        paintManager.paint(this, point, 1f, 0.5f, 1f, c);
     }
     
     void OnDisable(){

@@ -8,7 +8,8 @@ public class Splatter : MonoBehaviour
         if (pr != null)
         {
             ContactPoint contact = collision.GetContact(0);
-            pr.ReceivePaint(contact.point, contact.normal);
+            Color c = gameObject.GetComponent<Renderer>().material.color;
+            pr.ReceivePaint(contact.point, contact.normal, c);
             Destroy(gameObject);
         }
     }

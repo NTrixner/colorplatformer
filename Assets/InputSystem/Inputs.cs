@@ -12,6 +12,7 @@ namespace Movement
 		public Vector2 look;
 		public bool jump;
 		public bool cursorDown;
+		public bool aim;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -45,6 +46,11 @@ namespace Movement
 		{
 			CursorInput(value.isPressed);
 		}
+
+		public void OnAim(InputValue value)
+		{
+			AimInput(value.isPressed);
+		}
 #else
 	// old input sys if we do decide to have it (most likely wont)...
 #endif
@@ -68,6 +74,11 @@ namespace Movement
 		public void CursorInput(bool isDown)
 		{
 			cursorDown = isDown;
+		}
+
+		public void AimInput(bool isDown)
+		{
+			aim = isDown;
 		}
 
 #if !UNITY_IOS || !UNITY_ANDROID
