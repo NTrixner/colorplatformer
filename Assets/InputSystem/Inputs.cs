@@ -49,7 +49,6 @@ namespace Movement
 
 		public void OnShoot(InputValue value)
 		{
-			Debug.Log("Mouse down!" + value.Get());
 			CursorInput(value.isPressed);
 		}
 #else
