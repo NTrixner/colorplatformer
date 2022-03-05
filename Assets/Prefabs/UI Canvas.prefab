@@ -1759,3 +1759,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalTime: 0
   tmp: {fileID: 8097997221548044508}
+  scoreLabel: {fileID: 8749995233768428397}
+  paintBarUi: {fileID: 8097997220837688386}
+  levelCompleteUi: {fileID: 3214425862295673826}

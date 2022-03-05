@@ -12,7 +12,7 @@ public class Gateway : MonoBehaviour
         if (other.gameObject.GetComponent<ThirdPersonController>() != null)
         {
             Debug.Log("Level finished in " + timer.FormatTime() + "!");
-            timer.enabled = false;
+            timer.FinishLevel();
         }
     }
 }
