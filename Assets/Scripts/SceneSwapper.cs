@@ -32,5 +32,8 @@ public class SceneSwapper : MonoBehaviour
     public void ReloadLevel()
     {
         SceneManager.LoadScene(levels[index]);
+        
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

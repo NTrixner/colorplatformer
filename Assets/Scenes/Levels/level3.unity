@@ -3422,6 +3422,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2087043479367106651, guid: 686bc8e39bb4e934d831aa1a40d27cb9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215579028799669836, guid: 686bc8e39bb4e934d831aa1a40d27cb9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8097997220549888776, guid: 686bc8e39bb4e934d831aa1a40d27cb9, type: 3}
       propertyPath: m_Name
       value: UI Canvas

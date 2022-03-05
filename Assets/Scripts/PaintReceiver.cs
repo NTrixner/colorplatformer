@@ -1,4 +1,3 @@
-using System;
 using ColorPlatformer;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -40,5 +39,6 @@ public class PaintReceiver : MonoBehaviour
     
     void OnDisable(){
         renderTexture.Release();
+        paintTexture.Release();
     }
 }
