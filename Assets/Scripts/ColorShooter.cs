@@ -37,7 +37,7 @@ public class ColorShooter : MonoBehaviour
         paintBar.SetColor(baseColor);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Ray ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2f, Screen.height / 2f));
         if (Physics.Raycast(ray, out RaycastHit raycastHit))
@@ -62,7 +62,7 @@ public class ColorShooter : MonoBehaviour
                 timeSinceLastSpawn = 0;
             }
 
-            direction.y = thirdPersonController.transform.position.y;
+            direction.y = thirdPersonController.transform.forward.y;
             thirdPersonController.transform.forward = Vector3.Lerp(thirdPersonController.transform.forward, direction, Time.deltaTime * 20f);
         }
     }

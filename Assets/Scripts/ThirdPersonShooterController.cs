@@ -18,7 +18,7 @@ public class ThirdPersonShooterController : MonoBehaviour
         thirdPersonController = FindObjectOfType<ThirdPersonController>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (inputs.aim)
         {

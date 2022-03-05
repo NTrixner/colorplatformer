@@ -34,7 +34,7 @@ public class PaintReceiver : MonoBehaviour
 
     public void ReceivePaint(Vector3 point, Vector3 normal, Color c)
     {
-        paintManager.paint(this, point, 1f, 0.5f, 1f, c);
+        paintManager.paint(this, point, 1f, 1f, 1f, c);
     }
     
     void OnDisable(){
