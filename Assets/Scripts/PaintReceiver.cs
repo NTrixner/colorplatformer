@@ -1,6 +1,7 @@
 using System;
 using ColorPlatformer;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PaintReceiver : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class PaintReceiver : MonoBehaviour
 
     public RenderTexture paintTexture;
     
-    public Renderer renderer;
+    public Renderer receiverRenderer;
 
     private int maskTextureID = Shader.PropertyToID("_MaskTexture");
     private PaintManager paintManager;
@@ -26,8 +27,8 @@ public class PaintReceiver : MonoBehaviour
         paintTexture.filterMode = FilterMode.Bilinear;
         paintTexture.name = "Paint";
         
-        renderer = GetComponent<Renderer>();
-        renderer.material.SetTexture(maskTextureID, renderTexture);
+        receiverRenderer = GetComponent<Renderer>();
+        receiverRenderer.material.SetTexture(maskTextureID, renderTexture);
         
         paintManager.initTextures(this);
     }
