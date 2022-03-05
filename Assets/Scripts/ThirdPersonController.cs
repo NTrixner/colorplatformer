@@ -82,7 +82,7 @@ namespace Movement
 		private int _animIDGrounded;
 		private int _animIDJump;
 		private int _animIDFreeFall;
-		private int _animIDMotionSpeed;
+		// private int _animIDMotionSpeed;
 
 		private PlayerInput _playerInput;
 		private Animator _animator;
@@ -139,7 +139,7 @@ namespace Movement
 			_animIDGrounded = Animator.StringToHash("Grounded");
 			_animIDJump = Animator.StringToHash("Jump");
 			_animIDFreeFall = Animator.StringToHash("FreeFall");
-			_animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
+			// _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
 		}
 
 		private void GroundedCheck()
@@ -232,7 +232,7 @@ namespace Movement
 			if (_hasAnimator)
 			{
 				_animator.SetFloat(_animIDSpeed, _animationBlend);
-				_animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
+				// _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
 			}
 		}
 
