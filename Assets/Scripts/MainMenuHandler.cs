@@ -6,6 +6,7 @@ public class MainMenuHandler : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject controlsMenu;
     [SerializeField] private GameObject levelsMenu;
+    [SerializeField] private GameObject creditsMenu;
 
     [SerializeField] private Button[] LevelButtons;
 
@@ -26,6 +27,7 @@ public class MainMenuHandler : MonoBehaviour
         mainMenu.SetActive(true);
         controlsMenu.SetActive(false);
         levelsMenu.SetActive(false);
+        creditsMenu.SetActive(false);
     }
 
     public void OpenControlsMenu()
@@ -33,6 +35,7 @@ public class MainMenuHandler : MonoBehaviour
         mainMenu.SetActive(false);
         controlsMenu.SetActive(true);
         levelsMenu.SetActive(false);
+        creditsMenu.SetActive(false);
     }
     
     public void OpenLevelsMenu()
@@ -40,6 +43,15 @@ public class MainMenuHandler : MonoBehaviour
         mainMenu.SetActive(false);
         controlsMenu.SetActive(false);
         levelsMenu.SetActive(true);
+        creditsMenu.SetActive(false);
+    }
+    
+    public void OpenCreditsMenu()
+    {
+        mainMenu.SetActive(false);
+        controlsMenu.SetActive(false);
+        levelsMenu.SetActive(false);
+        creditsMenu.SetActive(true);
     }
 
     public void ActivateLevelButton(int index)
