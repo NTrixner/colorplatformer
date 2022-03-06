@@ -19,6 +19,7 @@ public class ColorShooter : MonoBehaviour
     [SerializeField] private Color baseColor = Color.green;
 
     [SerializeField] private AudioSource pewSource;
+    [SerializeField] private AudioSource pfSource;
 
     private Inputs input;
 
@@ -52,17 +53,25 @@ public class ColorShooter : MonoBehaviour
         if (input.aim)
         {
             Vector3 direction = Vector3.Normalize(targetPoint - transform.position);
-            if (input.cursorDown && timeSinceLastSpawn >= spawnInterval && paintBar.CanShoot(baseColorCost))
+            if (input.cursorDown && timeSinceLastSpawn >= spawnInterval)
             {
-                paintBar.Shoot(baseColorCost);
-                Transform thisTrans = transform;
-                Vector3 force = direction * Force;
-                GameObject instantiated = Instantiate(ProjectilePrefab);
-                instantiated.transform.SetPositionAndRotation(thisTrans.position, thisTrans.rotation);
-                instantiated.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
-                instantiated.GetComponent<Renderer>().material.color = baseColor;
+                if (paintBar.CanShoot(baseColorCost))
+                {
+                    paintBar.Shoot(baseColorCost);
+                    Transform thisTrans = transform;
+                    Vector3 force = direction * Force;
+                    GameObject instantiated = Instantiate(ProjectilePrefab);
+                    instantiated.transform.SetPositionAndRotation(thisTrans.position, thisTrans.rotation);
+                    instantiated.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
+                    instantiated.GetComponent<Renderer>().material.color = baseColor;
+                    pewSource.Play();
+                }
+                else
+                {
+                    pfSource.Play();
+                }
+                
                 timeSinceLastSpawn = 0;
-                pewSource.Play();
             }
 
             direction.y = thirdPersonController.transform.forward.y;
