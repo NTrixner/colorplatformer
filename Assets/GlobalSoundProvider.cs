@@ -16,19 +16,9 @@ public class GlobalSoundProvider : MonoBehaviour
     {
         FindObjectOfType<GlobalSound>().StartMenu();
     }
-
-    public void StopMenu()
-    {
-        FindObjectOfType<GlobalSound>().StopMenu();
-    }
-
+    
     public void StartLevel()
     {
         FindObjectOfType<GlobalSound>().StartLevel();
-    }
-
-    public void StopLevel()
-    {
-        FindObjectOfType<GlobalSound>().StopLevel();
     }
 }

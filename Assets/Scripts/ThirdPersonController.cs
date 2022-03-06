@@ -231,11 +231,11 @@ namespace Movement
 			// move the player
 			_controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
-			if (_speed > 0 && !runSource.isPlaying)
+			if (_speed > 0 && !runSource.isPlaying && Grounded)
 			{
 				runSource.Play();
 			}
-			else if (_speed == 0 && runSource.isPlaying)
+			else if (_speed == 0 || !Grounded && runSource.isPlaying)
 			{
 				runSource.Stop();
 			}

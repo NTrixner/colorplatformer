@@ -25,22 +25,18 @@ public class GlobalSound : MonoBehaviour
 
     public void StartMenu()
     {
-        menuMusic.Play();
-    }
-
-    public void StopMenu()
-    {
-        menuMusic.Stop();
+        if(!menuMusic.isPlaying)
+            menuMusic.Play();
+        if(levelMusic.isPlaying)
+            levelMusic.Stop();
     }
 
     public void StartLevel()
-    {
-        levelMusic.Play();
-    }
-
-    public void StopLevel()
-    {
-        levelMusic.Stop();
+    {        
+        if(!levelMusic.isPlaying)
+            levelMusic.Play();
+        if(menuMusic.isPlaying)
+            menuMusic.Stop();
     }
 
     public void Splatter()
