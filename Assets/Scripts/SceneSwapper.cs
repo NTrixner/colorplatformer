@@ -32,6 +32,7 @@ public class SceneSwapper : MonoBehaviour
     public void ReloadLevel()
     {
         SceneManager.LoadScene(levels[index]);
+        FindObjectOfType<GlobalSoundProvider>().StartLevel();
         
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -45,6 +46,7 @@ public class SceneSwapper : MonoBehaviour
     public void OpenMainMenu()
     {
         SceneManager.LoadScene("Menu");
+        FindObjectOfType<GlobalSoundProvider>().StartMenu();
         
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;

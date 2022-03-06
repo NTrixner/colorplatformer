@@ -17,6 +17,8 @@ public class MainMenuHandler : MonoBehaviour
         {
             ActivateLevelButton(i);
         }
+        
+        FindObjectOfType<GlobalSoundProvider>().StartMenu();
     }
 
     public void OpenMainMenu()
