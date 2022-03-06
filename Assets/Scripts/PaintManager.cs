@@ -44,8 +44,6 @@ namespace ColorPlatformer
         public void paint(PaintReceiver receiver, Vector3 pos, float radius = 1f, float hardness = .5f,
             float strength = .5f, Color? color = null)
         {
-            Debug.Log(string.Format("paint(receiver={0}, pos={1}, radius={2}, hardness={3}, strength={4}, color={5}", 
-                receiver, pos, radius, hardness, strength, color));
             RenderTexture renderTex = receiver.renderTexture;
             RenderTexture paintTex = receiver.paintTexture;
             Renderer rend = receiver.receiverRenderer;
