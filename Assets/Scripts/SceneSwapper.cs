@@ -11,6 +11,17 @@ public class SceneSwapper : MonoBehaviour
         "level2",
         "level3"
     };
+
+    public void LevelFinished()
+    {
+        PlayerPrefs.SetInt("FinishLevel"+index, 1);
+    }
+
+    public void LoadLevel(int index)
+    {
+        this.index = index;
+        ReloadLevel();
+    }
     
     public void LoadNextLevel()
     {
@@ -24,5 +35,18 @@ public class SceneSwapper : MonoBehaviour
         
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
+    public void OpenMainMenu()
+    {
+        SceneManager.LoadScene("Menu");
+        
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }

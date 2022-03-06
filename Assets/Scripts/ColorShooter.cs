@@ -33,7 +33,7 @@ public class ColorShooter : MonoBehaviour
         input = FindObjectOfType<Inputs>();
         thirdPersonController = FindObjectOfType<ThirdPersonController>();
         paintBar = FindObjectOfType<PaintBar>();
-        baseColor = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+        baseColor = new Color(0.928f, 0f, 0.956f);
         paintBar.SetColor(baseColor);
     }
 

@@ -51,6 +51,11 @@ namespace Movement
 		{
 			AimInput(value.isPressed);
 		}
+
+		public void OnOpenMenu(InputValue value)
+		{
+			OpenMenuInput(value.isPressed);
+		}
 #else
 	// old input sys if we do decide to have it (most likely wont)...
 #endif
@@ -79,6 +84,11 @@ namespace Movement
 		public void AimInput(bool isDown)
 		{
 			aim = isDown;
+		}
+
+		public void OpenMenuInput(bool isDown)
+		{
+			FindObjectOfType<SceneSwapper>().OpenMainMenu();
 		}
 
 #if !UNITY_IOS || !UNITY_ANDROID
