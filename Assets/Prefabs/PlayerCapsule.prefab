@@ -979,7 +979,7 @@ MonoBehaviour:
   MoveSpeed: 4
   RotationSmoothTime: 0.12
   SpeedChangeRate: 10
-  CameraSensitivity: 0.7
+  CameraSensitivity: 1
   JumpHeight: 3
   Gravity: -15
   JumpTimeout: 0.5
@@ -1125,8 +1125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aimVirtualCamera: {fileID: 0}
-  normalCameraSensitivity: 0.7
-  aimSensitivity: 0.3
+  normalCameraSensitivity: 1
+  aimSensitivity: 0.5
   reticle: {fileID: 0}
 --- !u!114 &2468714030164847400
 MonoBehaviour:
