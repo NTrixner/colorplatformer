@@ -129,6 +129,12 @@ namespace Movement
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+
+			if (transform.position.y < -20)
+			{
+				FindObjectOfType<SceneSwapper>().ReloadLevel();
+				
+			}
 		}
 
 		private void LateUpdate()
