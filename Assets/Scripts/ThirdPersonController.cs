@@ -61,6 +61,9 @@ namespace Movement
 		[Tooltip("For locking the camera position on all axis")]
 		public bool LockCameraPosition = false;
 
+		public AudioSource runSource;
+		public AudioSource jumpSource;
+
 		// cinemachine
 		private float _cinemachineTargetYaw;
 		private float _cinemachineTargetPitch;
@@ -147,7 +150,7 @@ namespace Movement
 			// set sphere position, with offset
 			Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
 			Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
-
+			
 			// update animator if using character
 			if (_hasAnimator)
 			{
@@ -228,6 +231,14 @@ namespace Movement
 			// move the player
 			_controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
+			if (_speed > 0 && !runSource.isPlaying)
+			{
+				runSource.Play();
+			}
+			else if (_speed == 0 && runSource.isPlaying)
+			{
+				runSource.Stop();
+			}
 			// update animator if using character
 			if (_hasAnimator)
 			{
@@ -261,6 +272,8 @@ namespace Movement
 				{
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+					
+					jumpSource.Play();
 
 					// update animator if using character
 					if (_hasAnimator)

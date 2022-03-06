@@ -18,6 +18,8 @@ public class ColorShooter : MonoBehaviour
 
     [SerializeField] private Color baseColor = Color.green;
 
+    [SerializeField] private AudioSource pewSource;
+
     private Inputs input;
 
     private ThirdPersonController thirdPersonController;
@@ -60,6 +62,7 @@ public class ColorShooter : MonoBehaviour
                 instantiated.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
                 instantiated.GetComponent<Renderer>().material.color = baseColor;
                 timeSinceLastSpawn = 0;
+                pewSource.Play();
             }
 
             direction.y = thirdPersonController.transform.forward.y;
